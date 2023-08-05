@@ -106,3 +106,13 @@
     font-family: "Roboto Bold", sans-serif;
     cursor: pointer;
 }
+
+/* on tablet  */
+@media (max-width: 1024px){
+    .card {
+        /* reverse flex  */
+        display: flex; 
+        flex-direction: column-reverse;
+        max-width: 100%;
+    }
+}
