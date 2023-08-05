@@ -1,0 +1,108 @@
+@font-face {
+    font-family: 'Roboto Bold';
+    src: url("./assets/fonts/Roboto-Bold.ttf");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto Regular';
+    src: url("./assets/fonts/Roboto-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root{
+    --color-primary: hsl(4, 100%, 67%); 
+    --bg-primary:  hsl(234, 29%, 20%); 
+    /* instead of hsl, rbg, or rgba you can also just use predefined colors like red, blue, green, etc. */
+    --bg-secondary: white; 
+    --text-primary: hsl(235, 18%, 26%); 
+    --text-secondary: hsl(231, 7%, 60%); 
+    background-color: var(--bg-primary);
+    font-family: "Roboto Regular", sans-serif;
+}
+
+.card-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.content-wrapper{
+    padding: 20px;
+}
+
+.card{
+    display: flex;
+    flex-direction: row;
+    gap: 20px; 
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-secondary);
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 60%;
+}
+
+.card-header{
+    font-size: 3rem;
+    margin: 0;
+    color: var(--text-primary);
+    font-family: "Roboto Bold", sans-serif;
+}
+
+.card-body{
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-family: "Roboto Regular", sans-serif;
+}
+
+.card-ul {
+    list-style: none; 
+    display: flex; 
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+    margin: 40px 0 40px 0;
+}
+
+.card-ul > li {
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+    gap: 10px; 
+}
+
+#sign-up-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+#sign-up-form > label {
+    color: var(--text-primary);
+    font-family: "Roboto Bold", sans-serif;
+}
+
+#sign-up-form > input{
+    padding: 20px;
+    outline: 2px solid var(--text-secondary);
+    border-radius: 5px;
+    border: none;
+}
+
+
+#sign-up-form > button{
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--bg-primary);
+    color: var(--bg-secondary);
+    font-family: "Roboto Bold", sans-serif;
+    cursor: pointer;
+}
