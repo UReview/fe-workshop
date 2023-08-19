@@ -1,6 +1,6 @@
 class SpotifyClient {
   private accessToken: string | null;
-  private baseUrl = "https://api.spotify.com";
+  private baseUrl = "https://api.spotify.com/";
 
   constructor() {
     // Get access token from session storage
@@ -40,14 +40,16 @@ class SpotifyClient {
     this.accessToken = token;
   }
 
-  public useAPI(
+  public useAPI<T>(
     method: "GET" | "POST" | "PUT" | "DELETE",
     resource: string,
     queryParams?: URLSearchParams
-  ) {
+  ): Promise<T> {
     switch (method) {
       case "GET":
         return this.GET(resource, queryParams);
+      default:
+        throw new Error("Method not implemented");
     }
   }
 

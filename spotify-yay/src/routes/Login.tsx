@@ -1,10 +1,17 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Button, Heading } from "@chakra-ui/react";
-import SpotifyClientInstance from "./utils/SpotifyClient";
+import SpotifyClientInstance from "@/utils/SpotifyClient";
 import { BsSpotify } from "react-icons/bs";
-import LoginLayout from "./layouts/LoginLayout";
+import LoginLayout from "@/layouts/LoginLayout";
+import { UserContext } from "@/context/useUserContext";
+import useUser from "@/hooks/useUser";
+import { useNavigate } from "react-router-dom";
 
-function App() {
+function Login() {
+  const [user, _] = useContext(UserContext);
+  const { isLoading, getUser } = useUser();
+  const navigate = useNavigate();
+
   useEffect(() => {
     // Check url params for access token because Spotify redirects here after login
     const params = new URLSearchParams(window.location.hash);
@@ -14,6 +21,7 @@ function App() {
     // Okay to leave it there because it's only valid for a short time + it's not a secret at this point
     if (accessToken) {
       SpotifyClientInstance.setAccessToken(accessToken);
+      user ? navigate("/profile") : getUser();
     }
   });
 
@@ -25,6 +33,8 @@ function App() {
           SpotifyClientInstance.loginUser();
         }}
         leftIcon={<BsSpotify />}
+        loadingText="Fetching your profile..."
+        isLoading={isLoading}
       >
         Log into Spotify
       </Button>
@@ -32,4 +42,4 @@ function App() {
   );
 }
 
-export default App;
+export default Login;
